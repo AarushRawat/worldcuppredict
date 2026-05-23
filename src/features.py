@@ -1,11 +1,18 @@
 import pandas as pd
+import os
 
-def load_data(path='data/results.csv'):
+def load_data(path=None):
+    if path is None:
+        base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        path = os.path.join(base, 'data', 'results.csv')
     df = pd.read_csv(path)
     df['date'] = pd.to_datetime(df['date'])
     return df.sort_values('date').reset_index(drop=True)
 
-def load_rankings(path='data/fifa_ranking-2024-06-20.csv'):
+def load_rankings(path=None):
+    if path is None:
+        base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        path = os.path.join(base, 'data', 'fifa_ranking-2024-06-20.csv')
     df = pd.read_csv(path)
     df['rank_date'] = pd.to_datetime(df['rank_date'])
     return df.sort_values('rank_date').reset_index(drop=True)

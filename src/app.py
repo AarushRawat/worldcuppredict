@@ -161,7 +161,8 @@ st.markdown("""
 
 @st.cache_resource
 def load_pipeline():
-    pipeline, cols = joblib.load('models/model.pkl')
+    model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'models', 'model.pkl')
+    pipeline, cols = joblib.load(model_path)
     return pipeline, cols
 
 @st.cache_data

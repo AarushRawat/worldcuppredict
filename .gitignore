@@ -2,7 +2,6 @@ venv/
 __pycache__/
 *.pyc
 *.joblib
-*.csv
 *.zip
 *.tar.gz
 .DS_Store
